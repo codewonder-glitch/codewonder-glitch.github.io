@@ -42,8 +42,17 @@ export default class Navigation extends Component {
         this.setState({srch:e.target.value})
     }
 
-    signLink=()=>{
-        
+    senttoChild=()=>{
+       
+        if (this.state.signIn==false)
+        this.setState({signIn:true})
+     else
+     this.setState({signIn:false})
+    }
+
+    signLink=(e)=>{
+        // e.preventDefault()
+         this.senttoChild()
     }
 
     render(){
@@ -62,7 +71,7 @@ export default class Navigation extends Component {
             <h1>Shopper's stop</h1>
     <Link className="link" to="/" > Reactions</Link>
     { this.state.signIn==false &&
-    <Link className="link" to="/login" onClick={()=>{this.setState({signIn:true})}}> Hello,sign-in</Link>}
+    <Link className="link" to="/login" onClick={this.signLink}> Hello,sign-in</Link>}
   <Link className="link" to="/Sports">Sports</Link>
    <Link className="link" to="/Fun">Fun</Link>
    <Link className="link" to="/Artists">Artists</Link>
@@ -78,7 +87,7 @@ export default class Navigation extends Component {
    </div>
    </div>
     <Switch>
-    <Route exact path="/login" ><Login /> </Route> 
+    <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
     <Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> 
     <Route exact path="/" ><Search searchKey="Reactions" /> </Route>  
     <Route exact path="/Sports"><Search searchKey="Sports" /> </Route> 
@@ -96,6 +105,6 @@ export default class Navigation extends Component {
     }
 }
 
-
+// callParent={this.senttoChild}
     
     

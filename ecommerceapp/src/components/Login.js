@@ -14,7 +14,7 @@ gotopage:false
     }
 
     componentDidMount=()=>{
-      
+      console.log("cuming")
     }
     // .then(response=> response.json())
 
@@ -71,9 +71,10 @@ alert("login failed")
 render(){
   return (
       <React.Fragment>
-              <div className="App">
+              <div className="login">
+                  
     { this.state.gotopage ==false &&
-        
+        <div>
    
    <form style={{border:"4px solid purple"}}>
   <div className="container">
@@ -97,7 +98,14 @@ render(){
       <button type="submit" className="signinbtn" onClick={this.login}>Sign In</button>
     </div>
   </div>
-</form>}
+</form>
+
+<div>
+    <button type="submit" onClick={(e)=>document.getElementsByClassName("login")[0].style.display="none"}>X</button>
+    </div>
+    </div>
+   }
+  
 
        {this.state.gotopage==true &&
         <Renderuser username={this.state.username}/>} 

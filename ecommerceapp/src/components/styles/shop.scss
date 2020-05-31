@@ -1,0 +1,72 @@
+// Category - Search.js
+.gridContainer{
+    padding-top: 150px;
+    // background-color: transparent;
+    grid-row-gap: 10px;
+   grid-column-gap:10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-content: center;
+    justify-content: center;
+    .imagecontainer{
+        border:20px solid white;
+         border-bottom:30px solid white;
+        box-sizing: border-box;
+         box-shadow: 0px 4px 7px #777;
+         align-content: center;
+         justify-content: center;
+.homeimage{
+   margin-top:10px;
+    width:300px;
+   height:300px;
+}
+   
+   button{
+    position: relative;
+    font-family: cursive;
+    color:white;
+    font-size: large;
+    font-weight: bold;
+    width:90px;
+    height:40px;
+    margin: 10px 40px;
+    background: linear-gradient(to bottom, rgba(25, 25, 134, 0) , purple);
+     box-sizing: border-box;
+
+   }
+}
+}
+
+// Render image
+
+.renderimg{
+    left:50px;
+    position: absolute;
+    height:750px;
+        width:850px;
+    img{
+        
+        height:750px;
+        width:750px;
+    }
+       }
+
+       //menGif
+
+       @keyframes menGif {
+        from {background-color: white;}
+        to {background-color: blue;}
+      }
+      #menGif1{
+          display: block;
+        width: 200%;
+        height: 200%;
+        background-color:red;
+        animation-name: menGif;
+        animation-duration: 4s;
+        animation-delay: 2s;
+      }
+      
+
+
+

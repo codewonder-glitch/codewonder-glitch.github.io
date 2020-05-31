@@ -5,11 +5,14 @@ import Search from './Search'
 import Cart from './Cart'
 import './styles/shop.scss'
 import Login from './Login'
+import menGif from './Assets/men.gif'
+// import Dropdown from 'react-bootstrap/Dropdown'
 
 export default class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state={
+         menGif:'',   
         searchKey:'',
         srch:'',
         count:'',
@@ -20,6 +23,28 @@ export default class Navigation extends Component {
 
     componentDidMount() {
         // this.getApi();
+
+        axios({
+            "method":"GET",
+            "url":"https://apidojo-forever21-v1.p.rapidapi.com/products/search",
+            "headers":{
+            "content-type":"application/octet-stream",
+            "x-rapidapi-host":"apidojo-forever21-v1.p.rapidapi.com",
+            "x-rapidapi-key":"0c50512463mshf6956ddd7cdbe33p13858djsn036596cdcff1",
+            "useQueryString":true
+            },"params":{
+            "color_groups":"black",
+            "start":"0",
+            "rows":"20",
+            "query":"men"
+            }
+            })
+            .then((response)=>{
+            //   console.log(response)
+            })
+            .catch((error)=>{
+              console.log(error)
+            })
     }
 
 
@@ -44,16 +69,38 @@ export default class Navigation extends Component {
 
     senttoChild=()=>{
        
-        if (this.state.signIn==false)
+
         this.setState({signIn:true})
-     else
-     this.setState({signIn:false})
+  
     }
 
-    signLink=(e)=>{
-        // e.preventDefault()
-         this.senttoChild()
+    showGif=(e)=>{
+         e.preventDefault()
+        var timesRun = 0;
+var interval = setInterval(()=>{
+    console.log(timesRun)
+    // if (timesRun==0)
+    this.setState({menGif:<img src={menGif} />})
+    timesRun += 1;
+   
+    if(timesRun === 10){
+        clearInterval(interval);
+         document.getElementById("menGif1").style.display='none';
     }
+    //do whatever here..
+}, 300);
+  
+
+         }
+        
+
+//         timerFn=()=>{
+
+            
+            
+//         }
+
+    
 
     render(){
 
@@ -71,11 +118,12 @@ export default class Navigation extends Component {
             <h1>Shopper's stop</h1>
     <Link className="link" to="/" > Reactions</Link>
     { this.state.signIn==false &&
-    <Link className="link" to="/login" onClick={this.signLink}> Hello,sign-in</Link>}
-  <Link className="link" to="/Sports">Sports</Link>
-   <Link className="link" to="/Fun">Fun</Link>
-   <Link className="link" to="/Artists">Artists</Link>
-   <Link className="link" to="/Bookmarks">Bookmarks</Link>
+    <Link className="link" to="/login" > Hello,sign-in</Link>}
+  <Link className="link" to="/search">Sports</Link>
+   <Link className="link" to="/men" onClick={this.showGif}>Men</Link>
+   <Link className="link" to="/women">Women</Link>
+   <Link className="link" to="/kids">Kids</Link>
+   <Link className="link" to="/summer">summer</Link>
    <h1 className="visitcount">Visit#:{this.state.count}</h1>
    {/* <h1 className="username">{this.props.username}</h1> */}
    </div>
@@ -89,16 +137,17 @@ export default class Navigation extends Component {
     <Switch>
     <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
     <Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> 
-    <Route exact path="/" ><Search searchKey="Reactions" /> </Route>  
-    <Route exact path="/Sports"><Search searchKey="Sports" /> </Route> 
-    <Route exact path="/Fun" ><Search searchKey="fun" /></Route>  
-    <Route exact path="/Artists"><Search searchKey="Artists" /> </Route> 
+    <Route exact path="/men" ><Search searchKey="men" showProduct={false} /> </Route>  
+    <Route exact path="/women"><Search searchKey="women" showProduct={false} /> </Route> 
+    <Route exact path="/kids" ><Search searchKey="kids" showProduct={false}/></Route>  
+    <Route exact path="/summer"><Search searchKey="jewelery" showProduct={false} /> </Route> 
         <Route exact path="/Bookmarks"><Cart /></Route>  
     </Switch>
     </Router> 
   </div>  
-           
-   
+  <div id="menGif1" style={{display:'block'}}>
+         {this.state.menGif}  
+         </div>
      </React.Fragment> 
             </div>
         )

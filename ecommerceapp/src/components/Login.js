@@ -9,7 +9,8 @@ class Login extends Component{
         this.state={
 username:'',
 password:'',
-gotopage:false
+gotopage:false,
+callParent:''
         }
     }
 
@@ -39,6 +40,7 @@ gotopage:false
             console.log(arr[1])
 if(arr[1]=="true}"){
 this.setState({gotopage:true})
+this.setState({callParent:true})
 // document.getElementsByClassName("App")[0].style.display="none"
 }
 else
@@ -66,6 +68,13 @@ alert("login failed")
         this.setState({password:e.target.value})
     }
 
+    callParent=(e)=>{
+        e.preventDefault()
+        
+        document.getElementsByClassName("login")[0].style.display="none"
+        
+    }
+
 
 
 render(){
@@ -82,10 +91,10 @@ render(){
   
     <hr />
 
-    <label for="email"><b>UserName</b></label>
+    <label ><b>UserName</b></label>
     <input type="text" placeholder="Enter Email" name="username" required onChange={this.textChange}/>
 
-    <label for="psw"><b>Password</b></label>
+    <label ><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required onChange={this.textChange} />
 
    
@@ -101,7 +110,7 @@ render(){
 </form>
 
 <div>
-    <button type="submit" onClick={(e)=>document.getElementsByClassName("login")[0].style.display="none"}>X</button>
+    <button type="submit" onClick={this.callParent}>X</button>
     </div>
     </div>
    }
@@ -110,7 +119,8 @@ render(){
        {this.state.gotopage==true &&
         <Renderuser username={this.state.username}/>} 
      
-        
+        {this.state.callParent==true &&
+        this.props.callParent()}
 
     </div>
     </React.Fragment>

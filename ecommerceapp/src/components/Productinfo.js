@@ -10,7 +10,7 @@ constructor(props) {
     super(props);
     this.state={
   
-    count:'',
+    count:1,
     // htmlArray:[],
     // showProduct:false,
     // productId:''
@@ -25,20 +25,21 @@ componentDidMount() {
  }
 
  saveItem=(e)=>{
-e.preventDefault()
+ e.preventDefault()
 alert("Gif saved in Bookmarks")
-console.log(this.props.searchKey)
+console.log(this.state.count)
 var productObj={ 
-products_name:'visa' ,
-product_url:'fef' ,
-product_price:20.0 ,
-product_brand:"gv" ,
-product_count :2
+productName:'visa' ,
+productUrl:'fef' ,
+productPrice:20.0 ,
+productBrand:"gv" ,
+productCount :this.state.count
 }
 
-console.log(productObj)
-fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.herokuapp.com/giphy/v1/gifs`, {
-  method: 'POST',
+//console.log(productObj)
+//fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.herokuapp.com/giphy/v1/gifs`, {
+  fetch('/products/v1/products', {  
+method: 'POST',
  //  method:'PUT',
  headers: {
    'Accept': 'application/json',
@@ -50,12 +51,15 @@ fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.h
 
  }
 
- selectQty=(e)=>{
+ selectQty=(e)=>
+ {
+   e.preventDefault()
+   //console.log(e.target.value)
 this.setState({count:e.target.value})
-console.log(this.state.count)
+//console.log(this.state.count)
  }
  render(){
-   
+  
   return (
     <div>
     <div className="renderDetails">
@@ -63,14 +67,14 @@ console.log(this.state.count)
     </div>
 <div>
   <h3>Quantity</h3>
-    <select onchange={this.selectQty} id="count" name="count" >
+    <select value={this.state.count} onChange={this.selectQty} id="count" name="count" >
 <option  value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
 <option value="4">4</option>
 <option value="5">5</option>
 </select>
-    <button onClick={this.state.saveItem}>Add to Cart</button>
+    <button onClick={this.saveItem}>Add to Cart</button>
     </div>
 
     </div>

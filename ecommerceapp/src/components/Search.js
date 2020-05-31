@@ -79,7 +79,7 @@ export default class Search extends Component {
         }
         })  
          .then((res) => {
-           
+         // {`img$i`}
            // this.setState({htmlArray:res.data.data});
              //console.log(res.data.response.docs[0].thumb_image)
              //console.log(this.state.htmlArray)
@@ -87,12 +87,12 @@ export default class Search extends Component {
         
              let src;
          let htmlArray = res.data.response.docs.map((resObj,i) => 
-           <div key={i} className="imagecontainer">
+           <div id={i} className="imagecontainer">
       
        <img className="homeimage" id={i} onClick={this.showProduct} src={resObj.thumb_image} />
       
        <p>{resObj.title}</p>
-       <p>${resObj.sale_price}</p>
+       <p>{'$'+resObj.sale_price}</p>
        {/* <button id={i} value={resObj.thumb_image} onClick={this.saveImage} ></button> */}
        </div>
        

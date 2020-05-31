@@ -135,13 +135,13 @@ var interval = setInterval(()=>{
    </div>
    </div>
     <Switch>
-    <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
+    {/* <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
     <Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> 
-    <Route exact path="/men" ><Search searchKey="men" showProduct={false} /> </Route>  
+    <Route exact path="/men" ><Search searchKey="men" showProduct={false} /> </Route>   */}
     <Route exact path="/women"><Search searchKey="women" showProduct={false} /> </Route> 
-    <Route exact path="/kids" ><Search searchKey="kids" showProduct={false}/></Route>  
+    {/* <Route exact path="/kids" ><Search searchKey="kids" showProduct={false}/></Route>  
     <Route exact path="/summer"><Search searchKey="jewelery" showProduct={false} /> </Route> 
-        <Route exact path="/Bookmarks"><Cart /></Route>  
+        <Route exact path="/Bookmarks"><Cart /></Route>   */}
     </Switch>
     </Router> 
   </div>  

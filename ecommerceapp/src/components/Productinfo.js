@@ -29,12 +29,13 @@ e.preventDefault()
 alert("Gif saved in Bookmarks")
 console.log(this.props.searchKey)
 var productObj={ 
-products_name ,
-product_url ,
-product_price ,
-product_brand ,
-product_count :
+products_name:'visa' ,
+product_url:'fef' ,
+product_price:20.0 ,
+product_brand:"gv" ,
+product_count :2
 }
+
 console.log(productObj)
 fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.herokuapp.com/giphy/v1/gifs`, {
   method: 'POST',

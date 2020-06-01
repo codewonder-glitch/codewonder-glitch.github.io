@@ -139,8 +139,8 @@ var interval = setInterval(()=>{
     <Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> 
     <Route exact path="/men" ><Search searchKey="men" showProduct={false} /> </Route>   */}
     {/* <Route exact path="/women"><Search searchKey="women" showProduct={false} /> </Route>  */}
-    {/* <Route exact path="/kids" ><Search searchKey="kids" showProduct={false}/></Route>  
-    <Route exact path="/summer"><Search searchKey="jewelery" showProduct={false} /> </Route> */}
+    {/* <Route exact path="/kids" ><Search searchKey="kids" showProduct={false}/></Route>   */}
+  
         <Route exact path="/Cart"><Cart /></Route>   
     </Switch>
     </Router> 

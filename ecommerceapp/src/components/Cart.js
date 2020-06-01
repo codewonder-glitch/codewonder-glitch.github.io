@@ -17,7 +17,7 @@ export default class Search extends Component {
     }
    
 
-    componentDidMount() {
+    componentDidMount=()=> {
 this.getApi()
     }
         getApi=async()=> {
@@ -34,13 +34,14 @@ this.getApi()
                 htmlArr= data.map((dt,i)=>{
     return(
     <div className="imageContainer">
-        <img id={dt.productID} src={dt.productUrl}/>
+        <img src={dt.productUrl}/>
         <p>{dt.productBrand}</p>
+        <p>{dt.productId}</p>
         <p>{dt.productName}</p>
         <input type="text" onChange={this.qtyChange} value={dt.productCount}/>
         <p>{dt.productCount}</p>
         <p>{dt.productPrice}</p>
-        <button id={dt.productID} onClick={this.orderDelete}> Delete</button>
+        <button className="btn" type="submit" value={dt.productId} onClick={this.orderDelete}> Delete</button>
         {/* <button value={dt.productID} onClick={this.gifUpdate}> Update</button> */}
         </div>
     )
@@ -52,11 +53,12 @@ this.getApi()
                 )
         }
     
-        orderDelete=(e)=>{
+        orderDelete=async(e)=>{
             e.preventDefault()
             alert("Gif Deleted")
-            console.log(e.target.id)
-            fetch('/products/v1/products/1', {
+            console.log(e.target.value)
+            console.log(e.target.className)
+           await fetch(`/products/v1/products/`+e.target.value, {
                 method: 'DELETE',
                 headers: {
                   'Accept': 'application/json',

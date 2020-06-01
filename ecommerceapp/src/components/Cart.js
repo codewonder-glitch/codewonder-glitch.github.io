@@ -10,9 +10,11 @@ export default class Search extends Component {
         super(props);
         this.state={
             htmlArray:[],
+            inputArr:[],
         searchKey:'',
         srch:'',
-        count:''
+        count:'',
+        
         }
     }
    
@@ -29,18 +31,21 @@ this.getApi()
                  'Content-Type': 'application/json'
                }
                }).then(response=> response.json()) .then(data=>{
-               
+               var temp=[]
                 console.log(data)
                 htmlArr= data.map((dt,i)=>{
+temp.push(dt.productCount)
+                   this.setState({inputArr:temp})
+                   console.log(this.state.inputArr[i])
     return(
     <div className="imageContainer">
         <img src={dt.productUrl}/>
         <p>{dt.productBrand}</p>
         <p>{dt.productId}</p>
         <p>{dt.productName}</p>
-        <input type="text" onChange={this.qtyChange} value={dt.productCount}/>
-        <p>{dt.productCount}</p>
-        <p>{dt.productPrice}</p>
+        <input type="text" id={i} onChange={this.qtyChange} value={this.state.inputArr[i]}/>
+        {/* <p>{dt.productCount}</p>
+        <p>{dt.productPrice}</p> */}
         <button className="btn" type="submit" value={dt.productId} onClick={this.orderDelete}> Delete</button>
         {/* <button value={dt.productID} onClick={this.gifUpdate}> Update</button> */}
         </div>
@@ -89,14 +94,23 @@ this.getApi()
           
              
               })}
-        gifUpdate=(e)=>{
-            e.preventDefault()
-            
-            // this.setState({urlChange:e.target.value})
-        }
+        
 
         qtyChange=(e)=>{
-e.preventDefault()
+  e.preventDefault()
+
+// var temp=this.state.inputArr[e.target.id];
+// console.log(temp[e.target.id])
+// temp[e.target.id]=32
+// console.log(temp[e.target.id])
+// this.setState({inputArr[e.target.id]:temp[e.target.id]})
+
+        //   temp[e.target.id].text=e.target.value
+        //   this.setState({htmlArray:temp})
+// this.setState({:e.target.value})
+let newItems = [...this.state.inputArr];
+newItems[e.target.id] = e.target.value;
+// this.setState({ inputArr:newItems });
 
         }
     render(){

@@ -44,7 +44,7 @@ export default class Search extends Component {
               
           
         //   console.log(this.props.searchKey)
-            this.callApi()
+            //this.callApi()
             
         }
             }

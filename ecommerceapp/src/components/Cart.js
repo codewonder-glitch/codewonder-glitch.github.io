@@ -9,6 +9,7 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state={
+            htmlArray:[],
         searchKey:'',
         srch:'',
         count:''
@@ -39,8 +40,8 @@ this.getApi()
         <input type="text" onChange={this.qtyChange} value={dt.productCount}/>
         <p>{dt.productCount}</p>
         <p>{dt.productPrice}</p>
-        <button value={dt.productID} onClick={this.gifDelete}> Delete</button>
-        <button value={dt.productID} onClick={this.gifUpdate}> Update</button>
+        <button id={dt.productID} onClick={this.orderDelete}> Delete</button>
+        {/* <button value={dt.productID} onClick={this.gifUpdate}> Update</button> */}
         </div>
     )
                     
@@ -51,11 +52,11 @@ this.getApi()
                 )
         }
     
-        gifDelete=async(e)=>{
+        orderDelete=(e)=>{
             e.preventDefault()
             alert("Gif Deleted")
-            console.log(e.target.value)
-            await fetch('/products/v1/products'+e.target.value, {
+            console.log(e.target.id)
+            fetch('/products/v1/products/1', {
                 method: 'DELETE',
                 headers: {
                   'Accept': 'application/json',
@@ -103,6 +104,7 @@ e.preventDefault()
 
 <React.Fragment>
    <div>
+       {this.state.htmlArray}
        <h1>search </h1>
    </div>
    

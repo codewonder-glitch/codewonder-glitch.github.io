@@ -123,14 +123,14 @@ var interval = setInterval(()=>{
    <Link className="link" to="/men" onClick={this.showGif}>Men</Link>
    <Link className="link" to="/women">Women</Link>
    <Link className="link" to="/kids">Kids</Link>
-   <Link className="link" to="/summer">summer</Link>
+   <Link className="link" to="/Cart">Cart</Link>
    <h1 className="visitcount">Visit#:{this.state.count}</h1>
    {/* <h1 className="username">{this.props.username}</h1> */}
    </div>
    
    <div className="searchdiv">
        <input type="text" placeholder='Please search here' onChange={this.handleChange}></input>
-   <Link to="/Search" >  <button type="submit" onClick={(e)=>this.setState({searchKey:this.state.srch})}>Search</button ></Link>
+   {/* <Link to="/Search" >  <button type="submit" onClick={(e)=>this.setState({searchKey:this.state.srch})}>Search</button ></Link> */}
   
    </div>
    </div>
@@ -138,10 +138,10 @@ var interval = setInterval(()=>{
     {/* <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
     <Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> 
     <Route exact path="/men" ><Search searchKey="men" showProduct={false} /> </Route>   */}
-    <Route exact path="/women"><Search searchKey="women" showProduct={false} /> </Route> 
+    {/* <Route exact path="/women"><Search searchKey="women" showProduct={false} /> </Route>  */}
     {/* <Route exact path="/kids" ><Search searchKey="kids" showProduct={false}/></Route>  
-    <Route exact path="/summer"><Search searchKey="jewelery" showProduct={false} /> </Route> 
-        <Route exact path="/Bookmarks"><Cart /></Route>   */}
+    <Route exact path="/summer"><Search searchKey="jewelery" showProduct={false} /> </Route> */}
+        <Route exact path="/Cart"><Cart /></Route>   
     </Switch>
     </Router> 
   </div>  

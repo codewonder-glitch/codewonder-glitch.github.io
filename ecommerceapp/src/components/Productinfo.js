@@ -20,20 +20,21 @@ constructor(props) {
 
 componentDidMount() {
 
- 
      
+ 
  }
-
+ 
  saveItem=(e)=>{
  e.preventDefault()
 alert("Gif saved in Bookmarks")
 console.log(this.state.count)
+console.log(document.getElementsByClassName(this.props.id)[3].innerHTML)
 var productObj={ 
-productName:'visa' ,
-productUrl:'fef' ,
-productPrice:20.0 ,
-productBrand:"gv" ,
-productCount :this.state.count
+productName:document.getElementsByClassName(this.props.id)[2].innerHTML ,
+productUrl:document.getElementsByClassName(this.props.id)[0].src ,
+productPrice:parseFloat("21.32"),
+productBrand:document.getElementsByClassName(this.props.id)[1].innerHTML,
+productCount :parseInt(this.state.count)
 }
 
 //console.log(productObj)

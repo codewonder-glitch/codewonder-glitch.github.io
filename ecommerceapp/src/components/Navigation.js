@@ -10,6 +10,7 @@ import Data from './Data'
 import Men from './Men'
 import Women from './Women'
 import Kids from './Kids'
+import Renderuser from './Renderuser';
 // import Dropdown from 'react-bootstrap/Dropdown'
 
 export default class Navigation extends Component {
@@ -114,13 +115,10 @@ var interval = setInterval(()=>{
    {/* <h1 className="username">{this.props.username}</h1> */}
    </div>
    
-    {/* <div className="searchdiv">
-       <input type="text" placeholder='Please search here' onChange={this.handleChange}></input>
-    <Link to="/Search" >  <button type="submit" onClick={(e)=>this.setState({searchKey:this.state.srch})}>Search</button ></Link> 
-  
-   </div>  */}
    </div>
+   <div className="Route">
     <Switch>
+   
    <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
       {/*<Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> */}
     <Route exact path="/men" ><Men searchKey="men" showProduct={false} /> </Route>   
@@ -128,7 +126,9 @@ var interval = setInterval(()=>{
     <Route exact path="/kids" ><Kids searchKey="kids" showProduct={false}/></Route>  
   
         <Route exact path="/Cart"><Cart /></Route>   
+        <Route exact path="/" ><Renderuser/> </Route> 
     </Switch>
+    </div>
     </Router> 
   </div>  
   <div id="menGif1" style={{display:'block'}}>

@@ -3,6 +3,7 @@ import {  BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
 import Cart from './Cart'
 // import Cart from './Cart'
 import './styles/shop.scss'
+import Renderuser from './Renderuser'
 
 
 export default class Productinfo extends Component {
@@ -67,11 +68,12 @@ this.setState({count:e.target.value})
     <div>
     { (this.state.showCart==false) ?
     <div>
-    <div>
+     
+    <div className="orderDetails">
       <div className="renderDetails">
    {this.props.details[this.props.id]}
     </div>
-<div>
+<div className="otherParam">
   <h3>Quantity</h3>
     <select value={this.state.count} onChange={this.selectQty} id="count" name="count" >
 <option  value="1">1</option>
@@ -81,11 +83,13 @@ this.setState({count:e.target.value})
 <option value="5">5</option>
 </select>
     <button onClick={this.saveItem}>Add to Cart</button>
+    <Renderuser />
     </div>
     </div>
     </div>:
 
     <Cart />
+
 
 
     }

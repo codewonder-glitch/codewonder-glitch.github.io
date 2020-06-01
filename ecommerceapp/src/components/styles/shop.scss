@@ -1,6 +1,6 @@
 // Category - Search.js
 .gridContainer{
-    padding-top: 150px;
+   
     // background-color: transparent;
     grid-row-gap: 10px;
    grid-column-gap:10px;
@@ -72,7 +72,7 @@
 .cartParent{
   position: relative;
           left:200px;
-          top:200px;
+          // top:200px;
           // margin:100px;
       display: center;
       justify-content: center;
@@ -103,7 +103,7 @@ border:2px solid black;
       }
 
         //Nav bar
-
+.container{
         .route{
           position:fixed;
           z-index: 10;
@@ -139,11 +139,18 @@ border:2px solid black;
 .link:hover{
   background: linear-gradient(to bottom, #0020 , #b19cd9);
 }
-        }
+
+
+        }}
+        .Route{
+
+          padding-top: 150px;
+        
       }
+    }
 
       // Product Categories - Men,Women,Kids
-
+.orderDetails{
       .renderDetails{
         position:relative;
         top:120px;
@@ -158,11 +165,19 @@ img{
 }
 
           .productDetails{
-// align-self: flex-end
-// position: absolute;
-// top:50px;
-// left:250px;
+// align-self: flex-end;
+position: absolute;
+top:250px;
+left:650px;
+          }
+          
+
           }
         }
+        .otherParam{
+          position: absolute;
+top:300px;
+left:750px;
       }
+    }
     

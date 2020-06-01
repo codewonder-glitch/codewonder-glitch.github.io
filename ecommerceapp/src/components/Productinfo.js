@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
-
+import Cart from './Cart'
 // import Cart from './Cart'
 import './styles/shop.scss'
 
@@ -9,7 +9,7 @@ export default class Productinfo extends Component {
 constructor(props) {
     super(props);
     this.state={
-  
+  showCart:false,
     count:1,
     // htmlArray:[],
     // showProduct:false,
@@ -26,15 +26,16 @@ componentDidMount() {
  
  saveItem=(e)=>{
  e.preventDefault()
-alert("Gif saved in Bookmarks")
+
 console.log(this.state.count)
 console.log(document.getElementsByClassName(this.props.id)[3].innerHTML)
 var productObj={ 
 productName:document.getElementsByClassName(this.props.id)[2].innerHTML ,
 productUrl:document.getElementsByClassName(this.props.id)[0].src ,
-productPrice:parseFloat("21.32"),
+productPrice:parseFloat(document.getElementsByClassName(this.props.id)[3].innerHTML),
 productBrand:document.getElementsByClassName(this.props.id)[1].innerHTML,
 productCount :parseInt(this.state.count)
+
 }
 
 //console.log(productObj)
@@ -49,7 +50,8 @@ method: 'POST',
  body: JSON.stringify( productObj )
  
 });
-
+alert("Gif saved in Bookmarks")
+this.setState({showCart:true})
  }
 
  selectQty=(e)=>
@@ -63,8 +65,11 @@ this.setState({count:e.target.value})
   
   return (
     <div>
-    <div className="renderDetails">
-    {this.props.details[this.props.id]}
+    { (this.state.showCart==false) ?
+    <div>
+    <div>
+      <div className="renderDetails">
+   {this.props.details[this.props.id]}
     </div>
 <div>
   <h3>Quantity</h3>
@@ -77,6 +82,13 @@ this.setState({count:e.target.value})
 </select>
     <button onClick={this.saveItem}>Add to Cart</button>
     </div>
+    </div>
+    </div>:
+
+    <Cart />
+
+
+    }
 
     </div>
 

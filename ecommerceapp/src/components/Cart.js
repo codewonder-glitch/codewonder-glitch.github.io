@@ -14,6 +14,9 @@ export default class Search extends Component {
         searchKey:'',
         srch:'',
         count:'',
+        inputhtmlArray:[],
+        why:'3',
+        id:0
         
         }
     }
@@ -23,7 +26,7 @@ export default class Search extends Component {
 this.getApi()
     }
         getApi=async()=> {
-            var htmlArr=[]
+            var htmlArr=[], inputtextArr=[]
             await fetch('/products/v1/products', {
                 method:'GET',
                headers: {
@@ -38,20 +41,35 @@ temp.push(dt.productCount)
                    this.setState({inputArr:temp})
                    console.log(this.state.inputArr[i])
     return(
-    <div className="imageContainer">
+    <div className="cartContainer">
+        <div className="Image">
         <img src={dt.productUrl}/>
+        </div>
+        <div className="productInfo">
+        <p>{dt.productName}</p>
         <p>{dt.productBrand}</p>
         <p>{dt.productId}</p>
-        <p>{dt.productName}</p>
-        <input type="text" id={i} onChange={this.qtyChange} value={this.state.inputArr[i]}/>
-        {/* <p>{dt.productCount}</p>
-        <p>{dt.productPrice}</p> */}
+        <p>In Stock</p>
         <button className="btn" type="submit" value={dt.productId} onClick={this.orderDelete}> Delete</button>
+        <p contentEditable="true" id={i} onChange={(e)=>this.qtyChange(e,i)}>{dt.productCount}</p>
+        <p>{dt.productCount}</p>
+        </div>
+        <div clasName="price">
+        $<p  style={{display:'inline'}}>{dt.productPrice}</p>
+        </div>
+       
         {/* <button value={dt.productID} onClick={this.gifUpdate}> Update</button> */}
         </div>
     )
                     
-      }  )    
+      }  ) 
+      
+    //   inputtextArr=this.state.inputArr.map((dt,i)=>{
+    //       return(
+    //     <input type="text" id={i} onChange={(e)=>this.qtyChange(i,e)} value={dt}/>
+          
+    //   )})
+    //   this.setState({inputhtmlArray:inputtextArr})
       this.setState({htmlArray:htmlArr})
      } ).catch((err) => 
                 console.log ('error')
@@ -96,32 +114,44 @@ temp.push(dt.productCount)
               })}
         
 
-        qtyChange=(e)=>{
-  e.preventDefault()
+        qtyChange=(e,i)=>{
+// e.preventDefault()
+this.setState({id:e.target.id})
+var temp=this.state.htmlArray
+    temp[this.state.id].text=e.target.value;
+    this.setState({htmlArray:temp})
+    console.log(e.target.value )
+
+
 
 // var temp=this.state.inputArr[e.target.id];
 // console.log(temp[e.target.id])
 // temp[e.target.id]=32
 // console.log(temp[e.target.id])
 // this.setState({inputArr[e.target.id]:temp[e.target.id]})
-
+// this.state.inputArr[i]=e.target.value
         //   temp[e.target.id].text=e.target.value
-        //   this.setState({htmlArray:temp})
+          //this.setState({htmlArray:temp})
 // this.setState({:e.target.value})
-let newItems = [...this.state.inputArr];
-newItems[e.target.id] = e.target.value;
-// this.setState({ inputArr:newItems });
+// let newItems = [...this.state.inputArr];
+// newItems[i] = e.target.value;
+//  this.setState({ inputArr:this.state.inputArr });
+}
 
-        }
+change=(e)=>{
+e.preventDefault()
+this.setState({why:e.target.value})
+}
     render(){
 
         return(
          
 
 <React.Fragment>
-   <div>
+   <div className="cartParent">
        {this.state.htmlArray}
-       <h1>search </h1>
+     {this.state.inputhtmlArray}
+     {/* <p value={this.state.why} onChange={this.change}></p> */}
    </div>
    
            

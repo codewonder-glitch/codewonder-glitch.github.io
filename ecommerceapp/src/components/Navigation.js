@@ -6,6 +6,10 @@ import Cart from './Cart'
 import './styles/shop.scss'
 import Login from './Login'
 import menGif from './Assets/men.gif'
+import Data from './Data'
+import Men from './Men'
+import Women from './Women'
+import Kids from './Kids'
 // import Dropdown from 'react-bootstrap/Dropdown'
 
 export default class Navigation extends Component {
@@ -24,31 +28,13 @@ export default class Navigation extends Component {
     componentDidMount() {
         // this.getApi();
 
-        axios({
-            "method":"GET",
-            "url":"https://apidojo-forever21-v1.p.rapidapi.com/products/search",
-            "headers":{
-            "content-type":"application/octet-stream",
-            "x-rapidapi-host":"apidojo-forever21-v1.p.rapidapi.com",
-            "x-rapidapi-key":"0c50512463mshf6956ddd7cdbe33p13858djsn036596cdcff1",
-            "useQueryString":true
-            },"params":{
-            "color_groups":"black",
-            "start":"0",
-            "rows":"20",
-            "query":"men"
-            }
-            })
-            .then((response)=>{
-            //   console.log(response)
-            })
-            .catch((error)=>{
-              console.log(error)
-            })
+       
+           
+            
     }
 
 
-    getApi=async()=> {
+    getApi1=async()=> {
         var htmlArr=[]
         await fetch(`${'https://cors-anywhere.herokuapp.com/'}'https://glacial-woodland-21756.herokuapp.com/giphy/v1/visitor/count`, {
             method:'GET',
@@ -75,7 +61,7 @@ export default class Navigation extends Component {
     }
 
     showGif=(e)=>{
-         e.preventDefault()
+         //e.preventDefault()
         var timesRun = 0;
 var interval = setInterval(()=>{
     console.log(timesRun)
@@ -115,31 +101,31 @@ var interval = setInterval(()=>{
          <div className="route">
         <div className="flex">
         
-            <h1>Shopper's stop</h1>
-    <Link className="link" to="/" > Reactions</Link>
+           <div> <h1>Shopper's stop</h1></div>
+    <Link className="link" to="/" > </Link>
     { this.state.signIn==false &&
     <Link className="link" to="/login" > Hello,sign-in</Link>}
-  <Link className="link" to="/search">Sports</Link>
+  {/* <Link className="link" to="/search">Sports</Link> */}
    <Link className="link" to="/men" onClick={this.showGif}>Men</Link>
    <Link className="link" to="/women">Women</Link>
    <Link className="link" to="/kids">Kids</Link>
    <Link className="link" to="/Cart">Cart</Link>
-   <h1 className="visitcount">Visit#:{this.state.count}</h1>
+   <div><h1 className="visitcount">Visit#:{this.state.count}</h1></div>
    {/* <h1 className="username">{this.props.username}</h1> */}
    </div>
    
-   <div className="searchdiv">
+    {/* <div className="searchdiv">
        <input type="text" placeholder='Please search here' onChange={this.handleChange}></input>
-   {/* <Link to="/Search" >  <button type="submit" onClick={(e)=>this.setState({searchKey:this.state.srch})}>Search</button ></Link> */}
+    <Link to="/Search" >  <button type="submit" onClick={(e)=>this.setState({searchKey:this.state.srch})}>Search</button ></Link> 
   
-   </div>
+   </div>  */}
    </div>
     <Switch>
-    {/* <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
-    <Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> 
-    <Route exact path="/men" ><Search searchKey="men" showProduct={false} /> </Route>   */}
-    {/* <Route exact path="/women"><Search searchKey="women" showProduct={false} /> </Route>  */}
-    {/* <Route exact path="/kids" ><Search searchKey="kids" showProduct={false}/></Route>   */}
+   <Route exact path="/login" ><Login callParent={this.senttoChild} /> </Route> 
+      {/*<Route exact path="/Search" ><Search searchKey={this.state.searchKey} /> </Route> */}
+    <Route exact path="/men" ><Men searchKey="men" showProduct={false} /> </Route>   
+    <Route exact path="/women"><Women searchKey="women" showProduct={false} /> </Route> 
+    <Route exact path="/kids" ><Kids searchKey="kids" showProduct={false}/></Route>  
   
         <Route exact path="/Cart"><Cart /></Route>   
     </Switch>

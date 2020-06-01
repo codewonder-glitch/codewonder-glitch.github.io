@@ -4,10 +4,10 @@ import {  BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
 import Productinfo from './Productinfo'
 // import Cart from './Cart'
 import './styles/shop.scss'
-import Data from './Data'
+import data from './Data'
 import menGif from './Assets/men.gif'
 
-export default class Search extends Component {
+export default class Kids extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -24,34 +24,12 @@ export default class Search extends Component {
 
     componentDidMount() {
     
-//      console.log("wen do u come here")
-//         if(this.props.searchKey!=undefined)
-// console.log("will see")
+     console.log("wen do u come here")
+        if(this.props.searchKey!=undefined)
+console.log("will see")
       
-      this.callApi1();   
+      this.callApi();   
          
-     }
-
-     callApi11(){
-
-      let htmlArray=Data.data.map((resObj,i) => 
-           <div id={i} className="imagecontainer">
-      
-       <img className={i} id={i} onClick={this.showProduct} src={resObj.thumb_image} />
-         <p className={i} style={{display:'none'}}>{resObj.brand}</p>
-       <p className={i}>{resObj.title}</p>
-       <p className={i}>{'$'+resObj.sale_price}</p>
-       {/* <button id={i} value={resObj.thumb_image} onClick={this.saveImage} ></button> */}
-       </div>
-       
-        );
-         this.setState({htmlArray:htmlArray})
-         this.setState({showProduct:false})
- 
-        //  })
-        //  .catch((err) => {
-        //  console.log ('error');
-        //  })
      }
  
      componentDidUpdate(prevProps) {
@@ -68,12 +46,10 @@ export default class Search extends Component {
               
           
         //   console.log(this.props.searchKey)
-            this.callApi1()
+            this.callApi()
             
         }
             }
-
-
      
 
             showProduct=(e)=>{
@@ -82,17 +58,18 @@ export default class Search extends Component {
                 //console.log(this.state.htmlArray[e.target.id] )
                 this.setState({productId:e.target.id})
                 this.setState({showProduct:true})
-                
 
             }
+
+           
      
  
-     async callApi() {
+     async callAp1i() {
        // this.setState({searchKey:this.props.searchKey})
        var searchKey=this.props.searchKey
        axios({
         "method":"GET",
-        "url":"https://apidojo-forever1-v1.p.rapidapi.com/products/search",
+       // "url":"https://apidojo-forever1-v1.p.rapidapi.com/products/search",
         "headers":{
         "content-type":"application/octet-stream",
         "x-rapidapi-host":"apidojo-forever21-v1.p.rapidapi.com",
@@ -137,7 +114,50 @@ export default class Search extends Component {
  
        
  
-       
+       saveImage=(e)=>{
+        //  console.log(this.props.searchKey)
+         var gifObj={ }
+          gifObj={
+           gifName: this.props.searchKey,
+           gifCategory: this.props.searchKey,
+           gifUrl: e.target.value
+ 
+         }
+         //console.log(gifObj["GifName"])
+         fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.herokuapp.com/giphy/v1/gifs`, {
+           method: 'POST',
+          //  method:'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify( gifObj )
+        });
+        document.getElementById(e.target.id).disabled='true'
+       }
+       callApi=()=>{
+
+        let htmlArray=data.map((resObj,i) => 
+             <div id={i} className="imagecontainer">
+        <div>
+         <img className={i} id={i} onClick={this.showProduct} src={resObj.thumb_image} />
+         </div>
+         <div className="productDetails">
+           <p className={i} style={{display:'none'}}>{resObj.brand}</p>
+         <p className={i}>{resObj.title}</p>
+            $<p  style={{display:'inline'}} className={i}>{resObj.sale_price}</p>
+
+         </div>
+         </div>
+          );
+           this.setState({htmlArray:htmlArray})
+           this.setState({showProduct:false})
+   
+          //  })
+          //  .catch((err) => {
+          //  console.log ('error');
+          //  })
+       }
  render(){
  
    return (
@@ -148,7 +168,7 @@ export default class Search extends Component {
          { this.state.showProduct==false ?
         
    <div className="gridContainer">
-     <h1>Visa</h1>
+    
    {this.state.htmlArray}
      </div> : <div> <Productinfo details={this.state.htmlArray} id={this.state.productId} / > </div>
      }

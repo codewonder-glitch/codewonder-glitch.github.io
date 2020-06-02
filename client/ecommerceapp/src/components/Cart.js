@@ -58,11 +58,11 @@ this.getApi()
         <p>{dt.productName}</p>
         <p>{dt.productBrand}</p>
         <p>In Stock</p>
-        <button className="btn" type="submit" value={dt.productId} onClick={this.orderDelete}> Delete</button>
-        <button className="btn" type="submit" value={dt.productId} onClick={this.updateDb}> Update</button>
+        <button className="btndelete" type="submit" value={dt.productId} onClick={this.orderDelete}> Delete</button>
+        <button className="btnupdate" type="submit" value={dt.productId} onClick={this.updateDb}>Qty Update</button>
         
         </div>
-        <div clasName="price">
+        <div className="price">
         $<p name={dt.productId} style={{display:'inline'}}>{dt.productCount * dt.productPrice}</p>
         </div>
        
@@ -186,19 +186,19 @@ this.setState({why:e.target.value})
        {this.state.htmlArray}
        <form id="form1" onSubmit={this.handleSubmit}>
 {this.state.count==1 &&
-
-       <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange} />}
+   <div className="inputContainer">
+       <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange} /></div>}
        {this.state.count==2 &&
-       <div>
+       <div className="inputContainer">
         <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
        <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> </div>}
        {this.state.count==3 &&
-       <div>
+       <div className="inputContainer">
         <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
        <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
        <input className='input'id={3} type="text"  name="item3" value={this.state.item3} onChange={this.handletextChange}></input></div> }
        {this.state.count==4 &&
-       <div>
+       <div className="inputContainer">
         <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
        <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
        <input className='input'id={3} type="text"  name="item3" value={this.state.item3} onChange={this.handletextChange}></input>

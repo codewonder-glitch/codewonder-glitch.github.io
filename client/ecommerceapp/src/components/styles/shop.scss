@@ -1,6 +1,6 @@
 // Category - Search.js
 .gridContainer{
-   // background-color: transparent;
+  // background-color:lightblue;
     grid-row-gap: 10px;
    grid-column-gap:10px;
     display: grid;
@@ -8,19 +8,27 @@
     align-content: center;
     justify-content: center;
     .imagecontainer{
-        border:20px solid white;
-         border-bottom:30px solid white;
+     
+        border:20px solid whitesmoke;
+         border-bottom:30px solid whitesmoke;
         box-sizing: border-box;
          box-shadow: 0px 4px 7px #777;
          align-content: center;
          justify-content: center;
          
 
-   img{
+    img{
+  //   background-color: lightblue;
     width:300px;
    height:300px;
 
 }.productDetails{
+
+  //  font-family: cursive;
+  font-weight: 1em;
+   font-size: 1.3em;
+  margin:0px;
+  padding-top: 0px;;
 .brand{
   display: none;
              }}
@@ -73,23 +81,44 @@
 
       // Cart Page
 .cartParent{
+// overflow-y: hidden;
   position: relative;
           left:200px;
           // top:200px;
           // margin:100px;
       display: center;
       justify-content: center;
-
+      box-sizing: border-box;
+      //   padding: 12px 18px;
+        box-shadow: 0px 4px 7px pink;
+        .inputContainer{
+          display:flex;
+  flex-direction: column;
+  position:absolute;
+  left:450px;
+  top:180px;
+.input{
+  z-index:2;
+  // position:absolute;
+  // position:left;
+  padding:3px;
+  background-color: whitesmoke;
+  // padding: 30px;
+  // justify-content: space-around;
+  margin-bottom:180px;
+}
+        }
     
         .cartContainer{
-          
-          grid-row-gap: 100px;
+        //   overflow-y: hidden;
+          margin-top: 10px;
+          // grid-row-gap: 100px;
           text-align: center;
 width:75%;
-border:2px solid black;
+border:5px solid lightblue;
           display:Grid;
-          grid-row-gap: 100px;
-          // grid-column-gap:10px;
+          grid-row-gap: 500px;
+          //  grid-column-gap:10px;
           
           grid-template-columns: 40% auto auto;
         align-content: center;
@@ -99,22 +128,55 @@ border:2px solid black;
            height:200px;
           }
           .productInfo{
+margin: 0px;
+padding:0px;
             text-align:left;
+            font-size: 1.2em;
+            font-weight: bold;
+            font-family: cursive;
+            display: inline;
+            .btndelete{
+              position:relative;
+              // top:170px;
+left:320px;
+font-size: large;
+font-family: cursive;
+              background-color: lightblue;
+              margin-left: 20px;
+            }
+            .btnupdate{
+position: relative;
+// top:170px;
+left:100px;
+              font-size: large;
+font-family: cursive;
+              background-color:lightblue;
+              margin-left: 20px;
+              font-weight: black;
+            }
+          }
+          .price{
+            p{
+              background-color: blue($color: #000000);
+            font-size:1.4em;
+            font-weight:bold;
           }
 
         }
       }
+    }
+  
 
         //Nav bar
 .container{
 
         .route{
           position:fixed;
-          z-index: 10;
+           z-index: 1;
         height: 7em;
         width: 100%;
        background: lightyellow;
-       background: linear-gradient(to bottom, #0020 , turquoise);
+       background: linear-gradient(to bottom, #0020 , pink);
         box-sizing: border-box;
       //   padding: 12px 18px;
         box-shadow: 0px 4px 7px pink;
@@ -148,14 +210,15 @@ border:2px solid black;
         }}
         .Route{
 
-          padding-top: 150px;
+          padding-top: 115px;
         
       }
     }
 
       // Product Categories  Details- Men,Women,Kids
 .orderDetails{
-
+position: position;
+// overflow-y: hidden;
   
       .renderDetails{
         position:relative;
@@ -216,8 +279,8 @@ font-family: cursive;
         .otherParam{
           position: absolute;
          // text-align: right;
-top:376px;
- left:788px;
+top:350px;
+ left:810px;
 font-family:cursive;
 font-size: large;
 font-weight: bold;
@@ -228,7 +291,10 @@ button{
   font-size: x-large;
   width:150px;
   height:50px;
-  left:30px;
+  left:8px;
+  background-color: lightblue;
+  box-sizing: border-box;
+         box-shadow: 0px 4px 7px #777;
 }
 .Video{
   position: absolute;
@@ -349,5 +415,4 @@ button{
   }
   
   }
-  }
-    
+    }

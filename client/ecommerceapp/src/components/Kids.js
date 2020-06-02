@@ -143,9 +143,9 @@ console.log("will see")
          <img className={i} id={i} onClick={this.showProduct} src={resObj.thumb_image} />
          </div>
          <div className="productDetails">
-           <p className={i} style={{display:'none'}}>{resObj.brand}</p>
-         <p className={i}>{resObj.title}</p>
-            $<p  style={{display:'inline'}} className={i}>{resObj.sale_price}</p>
+           <p className={`brand ${i}`} >{resObj.brand}</p>
+         <p className={`title ${i}`}>{resObj.title}</p>
+            <p  style={{display:'inline'}} className={`price ${i}`}>{resObj.sale_price}</p>$
 
          </div>
          </div>

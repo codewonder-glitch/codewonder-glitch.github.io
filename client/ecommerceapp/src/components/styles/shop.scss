@@ -1,7 +1,6 @@
 // Category - Search.js
 .gridContainer{
-   
-    // background-color: transparent;
+   // background-color: transparent;
     grid-row-gap: 10px;
    grid-column-gap:10px;
     display: grid;
@@ -15,12 +14,16 @@
          box-shadow: 0px 4px 7px #777;
          align-content: center;
          justify-content: center;
+         
 
    img{
     width:300px;
    height:300px;
 
-}
+}.productDetails{
+.brand{
+  display: none;
+             }}
    
    button{
     position: relative;
@@ -104,6 +107,7 @@ border:2px solid black;
 
         //Nav bar
 .container{
+
         .route{
           position:fixed;
           z-index: 10;
@@ -149,12 +153,23 @@ border:2px solid black;
       }
     }
 
-      // Product Categories - Men,Women,Kids
+      // Product Categories  Details- Men,Women,Kids
 .orderDetails{
+
+  
       .renderDetails{
         position:relative;
-        top:120px;
-        left:120px;
+        // top:120px;
+        left:190px;
+        border:20px solid white;
+  border-bottom:30px solid white;
+ box-sizing: border-box;
+  box-shadow: 0px 4px 7px #777;
+  align-content: center;
+  justify-content: center;
+  max-width: 75%;
+  max-height: 60%;
+       
         .imagecontainer{
           display:flex;
           flex-direction: row;
@@ -165,19 +180,174 @@ img{
 }
 
           .productDetails{
-// align-self: flex-end;
+text-align: left;
 position: absolute;
-top:250px;
-left:650px;
-          }
+top:80px;
+left:600px;
           
+          .title{
+            margin: 0;
+            font-family: cursive;
+            // display: inline;
+            font-size: xx-large;
+            font-weight: 600;
+            
+           }
+           .brand{
+            font-size: x-large;
+            font-weight: bold;
+            font-family: cursive;
+display: inline;
+           }
+           .price{
 
+font-size: x-large;
+font-weight: bold;
+font-family: cursive;
+           }
+           .price::before{
+content:"Price:   ";
+font-family: cursive;
+           }
+          
+          }
           }
         }
         .otherParam{
           position: absolute;
-top:300px;
-left:750px;
+         // text-align: right;
+top:376px;
+ left:788px;
+font-family:cursive;
+font-size: large;
+font-weight: bold;
+margin:0;
+button{
+  position:absolute;
+  font-family: cursive;
+  font-size: x-large;
+  width:150px;
+  height:50px;
+  left:30px;
+}
+.Video{
+  position: absolute;
+  left:-100px;
+  top:250px;
+  width:350%;
+  height:600%;
+
+}
       }
     }
+
+    // Login screen
+
+    .login{
+      background-color: whitesmoke;
+       background: linear-gradient(to bottom, rgba(25, 25, 134, 0) ,whitesmoke);
+      width:100%;
+      height:100%;
+      position: absolute;
+       text-align: center;
+      // left:180px;
+      // top:100px;
+      
+  //     body {font-family: Arial, Helvetica, sans-serif;}
+  // * {box-sizing: border-box}
+  
+  .cancel{
+    position:absolute;
+    top:150px;
+    left:220px;
+  }
+
+  form{
+      width:70%;
+      height:60%;
+      position: relative;
+      left:180px;
+      top:100px;
+      display:flex;
+      flex-direction: column;
+      align-content:center;
+      justify-content:center;
+      text-align: center;
+      
+  h1{
+      background: linear-gradient(to bottom, #0020 , turquoise);
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+    width: 50%;
+    text-align: center;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+   display: block;
+    border: none;
+    background: #f1f1f1;
+    position: relative;;
+    left:220px;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* Set a style for all buttons */
+  .signinbtn {
+  //   background-color: #4CAF50;
+    position: relative;
+    left:230px;
+     padding: 12px 0px;
+     margin: 8px 7px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(to bottom, rgba(25, 25, 134, 0) , purple);
+  //    width: 30%;
+   
+  }
+  
+  // button:hover {
+  //   opacity:1;
+  // }
+  
+  
+  
+  /* Float cancel and signup buttons and add an equal width */
+   .signinbtn {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Add padding to container elements */
+  .container {
+    padding: 16px;
+    
+  }
+ 
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+  }
+  
+  }
+  }
     

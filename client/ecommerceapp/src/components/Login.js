@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Renderuser from './Renderuser'
+import './styles/shop.scss'
 
 // import './App.css';
 
@@ -109,8 +110,8 @@ render(){
   </div>
 </form>
 
-<div>
-    <button type="submit" onClick={this.callParent}>X</button>
+<div className="cancel">
+    <button id="cancel" type="submit" onClick={this.callParent}>X</button>
     </div>
     </div>
    }

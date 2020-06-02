@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import {  BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
 import Search from './Search'
 import Cart from './Cart'
@@ -11,7 +11,7 @@ import Men from './Men'
 import Women from './Women'
 import Kids from './Kids'
 import Renderuser from './Renderuser';
-// import Dropdown from 'react-bootstrap/Dropdown'
+
 
 export default class Navigation extends Component {
     constructor(props) {

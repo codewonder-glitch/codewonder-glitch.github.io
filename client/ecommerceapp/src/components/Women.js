@@ -139,14 +139,16 @@ console.log("will see")
 
         let htmlArray=data.map((resObj,i) => 
              <div id={i} className="imagecontainer">
-        
+        <div>
          <img className={i} id={i} onClick={this.showProduct} src={resObj.thumb_image} />
-           <p className={i} style={{display:'none'}}>{resObj.brand}</p>
-         <p className={i}>{resObj.title}</p>
-         <p className={i}>{'$'+resObj.sale_price}</p>
-         {/* <button id={i} value={resObj.thumb_image} onClick={this.saveImage} ></button> */}
          </div>
-         
+         <div className="productDetails">
+           <p className={`brand ${i}`} >{resObj.brand}</p>
+         <p className={`title ${i}`}>{resObj.title}</p>
+            <p  style={{display:'inline'}} className={`price ${i}`}>{resObj.sale_price}</p>$
+
+         </div>
+         </div>
           );
            this.setState({htmlArray:htmlArray})
            this.setState({showProduct:false})

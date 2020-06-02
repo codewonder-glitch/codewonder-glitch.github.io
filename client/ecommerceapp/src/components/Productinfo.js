@@ -74,7 +74,7 @@ this.setState({count:e.target.value})
    {this.props.details[this.props.id]}
     </div>
 <div className="otherParam">
-  <h3>Quantity</h3>
+  Quantity <ensp />
     <select value={this.state.count} onChange={this.selectQty} id="count" name="count" >
 <option  value="1">1</option>
 <option value="2">2</option>
@@ -82,6 +82,9 @@ this.setState({count:e.target.value})
 <option value="4">4</option>
 <option value="5">5</option>
 </select>
+<br/><br/>
+<p>Free Shipping</p>
+<br/><br/>
     <button onClick={this.saveItem}>Add to Cart</button>
     <Renderuser />
     </div>

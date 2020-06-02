@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import {  BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
 
 
@@ -10,15 +10,24 @@ export default class Search extends Component {
         super(props);
         this.state={
             htmlArray:[],
-            inputArr:[],
+         
         searchKey:'',
         srch:'',
-        count:'',
+        count:'2',
         inputhtmlArray:[],
-        why:'3',
-        id:0
+        users:[{firstName:"visa"}],
+        inputTextArr:[],
+        item1:'',
+        item2:'',
+        item3:'',
+        item4:'',
+        item5:'',
+        putid:'',
+        putvalue:''
+
         
         }
+        this.handletextChange = this.handletextChange.bind(this);
     }
    
 
@@ -26,7 +35,9 @@ export default class Search extends Component {
 this.getApi()
     }
         getApi=async()=> {
-            var htmlArr=[], inputtextArr=[]
+
+            var htmlArr=[], inputArr=[],productIds=[]
+
             await fetch('/products/v1/products', {
                 method:'GET',
                headers: {
@@ -34,12 +45,10 @@ this.getApi()
                  'Content-Type': 'application/json'
                }
                }).then(response=> response.json()) .then(data=>{
-               var temp=[]
-                console.log(data)
-                htmlArr= data.map((dt,i)=>{
-temp.push(dt.productCount)
-                   this.setState({inputArr:temp})
-                   console.log(this.state.inputArr[i])
+                   htmlArr= data.map((dt,i)=>{
+                    inputArr.push(dt.productCount)
+                    productIds.push(dt.productId)
+                  
     return(
     <div className="cartContainer">
         <div className="Image">
@@ -48,14 +57,13 @@ temp.push(dt.productCount)
         <div className="productInfo">
         <p>{dt.productName}</p>
         <p>{dt.productBrand}</p>
-        <p>{dt.productId}</p>
         <p>In Stock</p>
         <button className="btn" type="submit" value={dt.productId} onClick={this.orderDelete}> Delete</button>
-        <p contentEditable="true" id={i} onChange={(e)=>this.qtyChange(e,i)}>{dt.productCount}</p>
-        <p>{dt.productCount}</p>
+        <button className="btn" type="submit" value={dt.productId} onClick={this.updateDb}> Update</button>
+        
         </div>
         <div clasName="price">
-        $<p  style={{display:'inline'}}>{dt.productPrice}</p>
+        $<p name={dt.productId} style={{display:'inline'}}>{dt.productCount * dt.productPrice}</p>
         </div>
        
         {/* <button value={dt.productID} onClick={this.gifUpdate}> Update</button> */}
@@ -63,16 +71,48 @@ temp.push(dt.productCount)
     )
                     
       }  ) 
+console.log(inputArr)
+this.setState({count:inputArr.length})
+      if(inputArr.length==1){
+        var temp=inputArr[0]
+this.setState({item1:temp})
+      }
+
+      else if(inputArr.length==2){
+      this.setState({item1:inputArr[0]})
+      this.setState({item2:inputArr[1]})
+      }
+      else if(inputArr.length==3){
+        this.setState({item1:inputArr[0]})
+        this.setState({item2:inputArr[1]})
+        this.setState({item3:inputArr[2]})
+        }
+        else if(inputArr.length==4){
+          this.setState({item1:inputArr[0]})
+          this.setState({item2:inputArr[1]})
+          this.setState({item3:inputArr[2]})
+          this.setState({item4:inputArr[3]})
+          }
+          else if(inputArr.length==5){
+            this.setState({item1:inputArr[0]})
+            this.setState({item2:inputArr[1]})
+            this.setState({item3:inputArr[2]})
+            this.setState({item4:inputArr[3]})
+            this.setState({item5:inputArr[4]})
+            }
       
-    //   inputtextArr=this.state.inputArr.map((dt,i)=>{
-    //       return(
-    //     <input type="text" id={i} onChange={(e)=>this.qtyChange(i,e)} value={dt}/>
-          
-    //   )})
-    //   this.setState({inputhtmlArray:inputtextArr})
       this.setState({htmlArray:htmlArr})
+      
+//       let inputTextArr=this.state.users.map((el, i) => (
+//         <div key={i}>
+//  <input type="text" placeholder="First Name" name={i} value={el.firstName} onChange={this.handleChange} />
+
+//         </div>          
+      // ))
+    //this.setState({inputTextArr:inputTextArr})
+     
      } ).catch((err) => 
-                console.log ('error')
+                console.log (err)
                 )
         }
     
@@ -96,47 +136,40 @@ temp.push(dt.productCount)
     
         }
 
-        updateDb=async()=>{
-            document.getElementById(this.state.urlChange).src=this.state.filePath
+        updateDb=async(e)=>{
+          e.preventDefault()
+          console.log(this.state.putvalue)
             // await fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.herokuapp.com/giphy/v1/gifs/`+this.state.urlChange, {
-                await fetch('/products/v1/products'+1,  {
+                await fetch('/products/v1/products/'+e.target.value,  {
             method: 'PUT',
               headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
-              body:JSON.stringify({gifUrl:this.state.filePath})      }  )
+              body:JSON.stringify({productCount:10})      }  )
               .then(response => response.json())
               .then((data)=>{
-      
-          
-             
+      //parseFloat(this.state.putvalue)
+          console.log(data)
+          // var i=e.target.value*parseFloat(this.state.putvalue)
+          // document.getElementsByName(e.target.value).innerHTML=`${i}`
+             this.getApi()
               })}
+
+              handletextChange(event) {
+                 event.preventDefault()
+              this.setState({[event.target.name]: event.target.value})
+             this.setState({putid:event.target.id})
+             this.setState({putvalue:event.target.value})
+             }
         
+handleSubmit=(e)=>{
+  e.preventDefault()
+console.log("are u coming here")
+this.updateDb()
 
-        qtyChange=(e,i)=>{
-// e.preventDefault()
-this.setState({id:e.target.id})
-var temp=this.state.htmlArray
-    temp[this.state.id].text=e.target.value;
-    this.setState({htmlArray:temp})
-    console.log(e.target.value )
-
-
-
-// var temp=this.state.inputArr[e.target.id];
-// console.log(temp[e.target.id])
-// temp[e.target.id]=32
-// console.log(temp[e.target.id])
-// this.setState({inputArr[e.target.id]:temp[e.target.id]})
-// this.state.inputArr[i]=e.target.value
-        //   temp[e.target.id].text=e.target.value
-          //this.setState({htmlArray:temp})
-// this.setState({:e.target.value})
-// let newItems = [...this.state.inputArr];
-// newItems[i] = e.target.value;
-//  this.setState({ inputArr:this.state.inputArr });
 }
+ 
 
 change=(e)=>{
 e.preventDefault()
@@ -149,12 +182,35 @@ this.setState({why:e.target.value})
 
 <React.Fragment>
    <div className="cartParent">
+     
        {this.state.htmlArray}
-     {this.state.inputhtmlArray}
-     {/* <p value={this.state.why} onChange={this.change}></p> */}
-   </div>
+       <form id="form1" onSubmit={this.handleSubmit}>
+{this.state.count==1 &&
+
+       <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange} />}
+       {this.state.count==2 &&
+       <div>
+        <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
+       <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> </div>}
+       {this.state.count==3 &&
+       <div>
+        <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
+       <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
+       <input className='input'id={3} type="text"  name="item3" value={this.state.item3} onChange={this.handletextChange}></input></div> }
+       {this.state.count==4 &&
+       <div>
+        <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
+       <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
+       <input className='input'id={3} type="text"  name="item3" value={this.state.item3} onChange={this.handletextChange}></input>
+       <input className='input'id={4} type="text"  name="item4" value={this.state.item4} onChange={this.handletextChange}></input></div> }
+      
    
-           
+            
+          </form>
+
+ 
+   
+   </div>  
    
      </React.Fragment> 
            

@@ -37,7 +37,7 @@ export default class Navigation extends Component {
 
     getApi1=async()=> {
         var htmlArr=[]
-        await fetch(`${'https://cors-anywhere.herokuapp.com/'}'https://springboot-clothingstore.herokuapp.com/giphy/v1/visitor/count`, {
+        await fetch(`${'https://cors-anywhere.herokuapp.com/'}' https://glacial-woodland-21756.herokuapp.com/giphy/v1/visitor/count`, {
             method:'GET',
            headers: {
              'Accept': 'application/json',

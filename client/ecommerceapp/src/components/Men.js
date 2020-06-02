@@ -28,7 +28,7 @@ export default class Men extends Component {
         if(this.props.searchKey!=undefined)
 console.log("will see")
       
-     // this.callApi();   
+      this.callApi();   
          
      }
  

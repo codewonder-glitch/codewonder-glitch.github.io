@@ -137,7 +137,6 @@ this.setState({item1:temp})
     
         orderDelete=async(e)=>{
             e.preventDefault()
-            alert("Gif Deleted")
             console.log(e.target.value)
             console.log(e.target.className)
            await fetch(`${'https://cors-anywhere.herokuapp.com/'}https://springboot-clothingstore.herokuapp.com/products/v1/products/`+e.target.value, {

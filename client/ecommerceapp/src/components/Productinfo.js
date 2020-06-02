@@ -41,7 +41,7 @@ productCount :parseInt(this.state.count)
 
 //console.log(productObj)
 //fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.herokuapp.com/giphy/v1/gifs`, {
-  fetch('/products/v1/products', {  
+  fetch(`${'https://cors-anywhere.herokuapp.com/'}https://springboot-clothingstore.herokuapp.com/products/v1/products`, {  
 method: 'POST',
  //  method:'PUT',
  headers: {
@@ -51,7 +51,7 @@ method: 'POST',
  body: JSON.stringify( productObj )
  
 });
-alert("Gif saved in Bookmarks")
+
 this.setState({showCart:true})
  }
 

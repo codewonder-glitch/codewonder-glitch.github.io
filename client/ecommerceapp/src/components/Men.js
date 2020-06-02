@@ -28,24 +28,16 @@ export default class Men extends Component {
         if(this.props.searchKey!=undefined)
 console.log("will see")
       
-      this.callApi();   
+     // this.callApi();   
          
      }
  
      componentDidUpdate(prevProps) {
        console.log("wen do u come here")
-      // document.getElementById("menGif").style.display='none';
-    //    console.log(this.props.searchKey)
-    // if (this.props.showProduct!=prevProps.showProduct)
-    // this.setState({showProduct:this.props.showProduct})
+    
        if (this.props.searchKey!=prevProps.searchKey)
-        {
-          
-
-
-              
-          
-        //   console.log(this.props.searchKey)
+        
+{  
             this.callApi()
             
         }
@@ -64,12 +56,12 @@ console.log("will see")
            
      
  
-     async callAp1i() {
+     async callApi() {
        // this.setState({searchKey:this.props.searchKey})
        var searchKey=this.props.searchKey
        axios({
         "method":"GET",
-       // "url":"https://apidojo-forever1-v1.p.rapidapi.com/products/search",
+       "url":"https://apidojo-forever1-v1.p.rapidapi.com/products/search",
         "headers":{
         "content-type":"application/octet-stream",
         "x-rapidapi-host":"apidojo-forever21-v1.p.rapidapi.com",
@@ -84,23 +76,20 @@ console.log("will see")
         })  
          .then((res) => {
            console.log(res.data)
-         // {`img$i`}
-           // this.setState({htmlArray:res.data.data});
-             //console.log(res.data.response.docs[0].thumb_image)
-             //console.log(this.state.htmlArray)
-             //this.setState({img:res.data.data[0].images.downsized.url})
+         
         
              let src;
          let htmlArray = res.data.response.docs.map((resObj,i) => 
-           <div id={i} className="imagecontainer">
-      
-       <img className={i} id={i} onClick={this.showProduct} src={resObj.thumb_image} />
-         <p className={i} style={{display:'none'}}>{resObj.brand}</p>
-       <p className={i}>{resObj.title}</p>
-       <p className={i}>{'$'+resObj.sale_price}</p>
-       {/* <button id={i} value={resObj.thumb_image} onClick={this.saveImage} ></button> */}
+         <div id={i} className="imagecontainer">
+         <div>
+          <img className={i} id={i} onClick={this.showProduct} src={resObj.thumb_image} />
+          </div>
+          <div className="productDetails">
+            <p className={`brand ${i}`} >{resObj.brand}</p>
+          <p className={`title ${i}`}>{resObj.title}</p>
+             <p  style={{display:'inline'}} className={`price ${i}`}>{resObj.sale_price}</p>$
        </div>
-       
+       </div>
         );
          this.setState({htmlArray:htmlArray})
          this.setState({showProduct:false})
@@ -112,30 +101,8 @@ console.log("will see")
          
        }
  
-       
- 
-       saveImage=(e)=>{
-        //  console.log(this.props.searchKey)
-         var gifObj={ }
-          gifObj={
-           gifName: this.props.searchKey,
-           gifCategory: this.props.searchKey,
-           gifUrl: e.target.value
- 
-         }
-         //console.log(gifObj["GifName"])
-         fetch(`${'https://cors-anywhere.herokuapp.com/'}https://glacial-woodland-21756.herokuapp.com/giphy/v1/gifs`, {
-           method: 'POST',
-          //  method:'PUT',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify( gifObj )
-        });
-        document.getElementById(e.target.id).disabled='true'
-       }
-       callApi=()=>{
+        
+       callAp1i=()=>{
 
         let htmlArray=data.map((resObj,i) => 
              <div id={i} className="imagecontainer">

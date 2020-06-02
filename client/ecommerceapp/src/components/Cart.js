@@ -229,14 +229,14 @@ this.setState({why:e.target.value})
        <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
        <input className='input'id={3} type="text"  name="item3" value={this.state.item3} onChange={this.handletextChange}></input>
        <input className='input'id={4} type="text"  name="item4" value={this.state.item4} onChange={this.handletextChange}></input></div> }
-      
+       {this.state.count==5 &&
        <div className="inputContainer">
         <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
        <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
        <input className='input'id={3} type="text"  name="item3" value={this.state.item3} onChange={this.handletextChange}></input>
        <input className='input'id={4} type="text"  name="item4" value={this.state.item4} onChange={this.handletextChange}></input>
        <input className='input' id={5} type="text"  name="item5" value={this.state.item5} onChange={this.handletextChange}></input> </div> }
-
+       {this.state.count==6 &&
            <div className="inputContainer">
         <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
        <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
@@ -244,7 +244,7 @@ this.setState({why:e.target.value})
        <input className='input'id={4} type="text"  name="item4" value={this.state.item4} onChange={this.handletextChange}></input>
        <input className='input' id={5} type="text"  name="item5" value={this.state.item5} onChange={this.handletextChange}></input> 
        <input className='input'id={6} type="text"  name="item6" value={this.state.item6} onChange={this.handletextChange}></input></div> } 
-        
+       {this.state.count>=7 &&
        <div className="inputContainer">
         <input className='input' id={1} type="text"  name="item1" value={this.state.item1} onChange={this.handletextChange}></input>
        <input className='input' id={2} type="text"  name="item2" value={this.state.item2} onChange={this.handletextChange}></input> 
